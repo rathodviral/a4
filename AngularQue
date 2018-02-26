@@ -1,0 +1,99 @@
+Template expression operators
+
+----------------------------------------------------------------------------
+What is the use of pipe operator (|) ?
+Pipes are simple functions that accept an input value and return a transformed value They're easy to apply within template expressions, using the pipe operator (|)
+
+----------------------------------------------------------------------------
+What is pipe chain
+{{title | uppercase | lowercase}}
+
+----------------------------------------------------------------------------
+What is the The safe navigation operator ( ?. ) and null property paths?
+The Angular safe navigation operator (?.) is a fluent and convenient way to guard against null and undefined values in property paths
+
+----------------------------------------------------------------------------
+The non-null assertion operator
+In this mode, typed variables disallow null and undefined by default. The type checker throws an error if you leave a variable unassigned or try to assign null or undefined to a variable whose type disallows null and undefined.
+
+----------------------------------------------------------------------------
+What is use of The $any type cast function 
+binding expression will be reported as a type error and it is not possible or difficult to fully specify the type. To silence the error
+{{$any(this).member}}
+
+
+Component Interaction
+
+----------------------------------------------------------------------------
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child [data]="parentData"></app-child>
+  `
+})
+export class HeroParentComponent {
+  parentData = 'Master';
+}
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <h3>{{childData}} says:</h3>
+  `
+})
+export class HeroChildComponent {
+  // Select code from option
+}
+
+==> @Input('data') childData: string;
+
+----------------------------------------------------------------------------
+
+@Component({
+  selector: 'app-name-child',
+  template: '<h3>"{{name}}"</h3>'
+})
+export class NameChildComponent {
+  private _name = '';
+
+  @Input()
+  set name(name: string) {
+    this._name = (name && name.trim()) || '<no name set>';
+  }
+
+  get name(): string { return this._name; }
+}
+
+@Component({
+  selector: 'app-name-parent',
+  template: `
+  <app-name-child *ngFor="let name of names" [name]="name"></app-name-child>
+  `
+})
+export class NameParentComponent {
+  
+  names = ['Mr. IQ', '   ', '  Bombasto  '];
+}
+
+==> // Displays 'Mr. IQ', '<no name set>', 'Bombasto'
+
+----------------------------------------------------------------------------
+
+what are One-way from data source to view target?
+{{expression}}/[target]="expression"
+----------------------------------------------------------------------------
+One-way from view target to data source
+
+(target)="statement"
+----------------------------------------------------------------------------
+Two-way
+
+[(target)]="expression"
+----------------------------------------------------------------------------
+Attribute/Class/Style binding
+
+[attr.aria-label/class.aria-label/style.aria-label]="condtion"
+
+-------
+
+What is BANANA IN A BOX?
