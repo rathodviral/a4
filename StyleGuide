@@ -1,0 +1,117 @@
+1. 	Single responsibility
+	Apply the single responsibility principle (SRP) to all components, services, and other symbols. This helps make the app cleaner, easier to read and maintain, and more testable.
+
+		Rule of One
+			define one thing, such as a service or component, per feature/functionality
+			limiting files to 400 lines of code.
+			One component per file makes it far easier to read, maintain, and avoid collisions with teams in source control
+		
+		Small functions
+			define small functions
+			limiting to no more than 75 lines.
+		
+2. 	Naming
+		General Naming
+			<FILE-NAME>.component.ts|html|css|spec
+			<FILE-NAME>.component|pipe|directive|service|module.ts
+		Separate file names with dots and dashes (Type names provide a consistent way to quickly identify what is in the file.)
+			feature.type.ts, create-edit.type.ts
+		Symbols and file names
+			Use upper camel case for class names (Ex - AppComponent, HeroDetailComponent)
+			give the filename the conventional suffix (Ex - app.component.ts, app.directive.ts, app.module.ts, app.pipe.ts, hero-detail.component.ts)
+			
+ 		Bootstrapping (put bootstrapping and platform logic for the app in a file named main.ts, include error handling in the bootstrapping logic)
+ 		Component selectors (use dashed-case or kebab-case for naming the element selectors of components) (Ex- 'toh-hero-button')
+ 		Component custom prefix (use a custom prefix for a component selector. For example, the prefix toh represents from Tour of Heroes and the prefix admin represents an admin feature area.)
+ 		Directive selectors (Use lower camel case for naming the selectors of directives.)
+ 		Directive custom prefix (Ex - '[tohValidate]')
+ 		Pipe names
+			@Pipe({ name: 'ellipsis' }), initCaps
+			export class EllipsisPipe implements PipeTransform { }
+			ellipsis.pipe.ts
+	
+	
+3. 	Coding conventions
+		Classes (ExceptionService)
+		Constants (declare variables with const if their values should not change during the application lifetime, tolerate existing const variables that are spelled in UPPER_SNAKE_CASE.)
+		Interfaces (name an interface using upper camel case)
+		Properties and methods (use lower camel case to name properties and methods)
+		Import line spacing (leaving one empty line between third party imports and application imports)
+	
+4. 	Application structure and NgModules
+	All of the app's code goes in a folder named src. All feature areas are in their own folder, with their own NgModule.
+	All content is one asset per file. Each component, service, and pipe is in its own file. All third party vendor scripts are stored in another folder and not in the src folder
+		LIFT
+			
+			Locate
+			Identify ( name the file such that you instantly know what it contains and represents)
+			Flat (keep a flat folder structure as long as possible,A flat structure is easy to scan)
+			T-DRY (Try to be DRY) (Don't Repeat Yourself)
+		
+		Overall structural guidelines
+			project
+				src
+					app (app.component.ts|html|css|spec.ts, app.module.ts, app-routing.module.ts)
+						core (core.module.ts, exception.service.ts|spec.ts)
+						heroes (heroes.module.ts, heroes-routing.module.ts, heroes.component.ts|html|css|spec.ts)
+							hero-list (hero-list.component.ts|html|css|spec.ts)
+							hero-detail (hero-detail.component.ts|html|css|spec.ts)
+							shared (hero.model.ts, hero-button.component.ts|html|css|spec.ts, hero.service.ts|spec.ts)
+						shared (shared.module.ts, init-caps.pipe.ts|spec.ts, text-filter.service.ts|spec.ts)
+							help (help.component.ts|html|css|spec.ts)
+					main.ts
+					index.html
+				node_modules
+				vendor
+		Folders-by-feature structure
+			create folders named for the feature area they represent, create an NgModule for each feature area.
+		
+		App root module
+		
+		Feature modules (create an NgModule for all distinct features in an application; for example, a Heroes feature,place the feature module in the same named folder as the feature area; for example, in app/heroes.)
+		
+		Shared feature module (declare components, directives, and pipes in a shared module when those items will be re-used and referenced by the components declared in other feature modules.
+		import all modules required by the assets in the SharedModule; for example, CommonModule and FormsModule)
+		declare all components, directives, and pipes in the SharedModule.
+		export all symbols from the SharedModule that other feature modules need to use.
+		
+		Core feature module (collecting numerous, auxiliary, single-use classes inside a core module to simplify the apparent structure of a feature module.)
+		
+		Prevent re-import of the core module (Only the root AppModule should import the CoreModule.)
+		Lazy Loaded folders (put the contents of lazy loaded features in a lazy loaded folder. A typical lazy loaded folder contains a routing component, its child components, and their related assets and modules)
+		
+		Never directly import lazy loaded folders
+	
+5.	Components
+		Components as elements (Not as attribute)
+		Extract templates and styles to their own files
+			extract templates and styles into a separate file, when more than 3 lines
+			specify component-relative URLs, prefixed with ./.
+		Decorate input and output properties ( use the @Input() and @Output() class decorators instead of the inputs and outputs properties of the @Directive and @Component metadata:)
+		Avoid aliasing inputs and outputs
+		Member sequence
+			// public properties
+			// private fields
+			// Constractor
+			// public methods			
+			// LifeCycle Hook
+			// private methods
+		Delegate complex component logic to services
+		Don't prefix output properties
+		Put presentation logic in the component class (put presentation logic in the component class, and not in the template)
+
+6.	Directives
+		Use directives to enhance an element (use attribute directives when you have presentation logic without a template)
+		HostListener/HostBinding decorators versus host metadata (preferring the @HostListener and @HostBinding to the host property of the @Directive and @Component decorators.)
+		
+7. 	Services
+		Services are singletons (use services as singletons within the same injector. Use them for sharing data and functionality)
+		Single responsibility (create services with a single responsibility that is encapsulated by its context)
+		Providing a service ( provide a service with the app root injector in the @Injectable decorator of the service)
+		Use the @Injectable() class decorator
+8. 	Data Services
+		Talk to the server through a service (make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations)
+		
+9. 	Lifecycle hooks
+		Implement lifecycle hook interface
+
