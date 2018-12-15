@@ -1,0 +1,19 @@
+Getting started
+- Prerequisites (Update angular-cli, npm i -g @angular/cli)
+- Installation
+- Create a workspace (ng new <APP-NAME>)
+- Serve the application (ng serve -o)
+
+Architecture overview
+- Folders information (dist, e2e, src, node_module)
+- Files information (.editorconfig, .gitignore, angular.json, package.json, package-lock.json, tsconfig.json, tslint.json)
+
+Angular overview (MVVM)
+- Check Image
+
+Application overview
+- Modules
+- Components
+- Data binding
+- Services and dependency injection
+- Routing
