@@ -12,8 +12,9 @@ Angular overview (MVVM)
 - Check Image
 
 Application overview
-- Modules
-- Components
-- Data binding
-- Services and dependency injection
-- Routing
+- Modules (Metadata, bootstraping, shared module, library adding)
+- Components (Metadata)
+- Data binding (Directives types)
+- Services (Metadata, from root)
+- Dependency injection (Creation, Definition, Declaration, Injection)
+- Routing (Routing module)
