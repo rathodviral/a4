@@ -1,0 +1,32 @@
+<ul>
+  <li>
+    <h2 [attr.data-test]="attributeTest">Attribute Bindings</h2>
+  </li>
+  <li>
+    <h2 [class.data-test]="classTest">Class Bindings</h2>
+  </li>
+  <li>
+    <h2 [style.color]="classTest ? 'green' : 'blue'">Stye Bindings</h2>
+  </li>
+</ul>
+<hr />
+<button (click)="clickHereToCheckBindings(tempVar)">Event Bindings</button>
+<hr />
+<form>
+  <input type="text" [(ngModel)]="twoWayTest" name="test" placeholder="Check here">
+</form>
+<hr />
+<h4>Template Ref Varible</h4>
+<input type="text" #tempVar name="test2" placeholder="Check here">
+<hr>
+<h3>Here Check - {{twoWayTest}}</h3>
+<hr>
+<h4>Attribute Directive</h4>
+<ul>
+  <li>
+    <h2 [ngClass]="{'data-bg-test': classTest,'data-color-test': !classTest}">ngClass</h2>
+  </li>
+  <li>
+    <h2 [ngStyle]="styles">ngStyle</h2>
+  </li>
+</ul>
