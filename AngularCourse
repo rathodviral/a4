@@ -80,3 +80,31 @@ Template expression operators
 - The safe navigation operator ( ?. ) and null property paths {{currentHero?.name}}
 - The non-null assertion operator ( ! ) it tells the TypeScript type checker to suspend strict null checks for a specific property expression
 - The $any type cast function ($any( <expression> )) Accessing an undeclared member {{$any(this).member}}
+
+User Input
+	Binding to user input events
+	Get user input from the $event object
+		onKey(event: any) { // without type info
+			this.values += event.target.value + ' | ';
+		}
+	Type the $event
+		this.values += (<HTMLInputElement>event.target).value + ' | ';
+	Get user input from a template reference variable
+	Key event filtering 
+		<input #box (keyup.enter)="onEnter(box.value)">
+	Observations
+		Use template variables to refer to elements
+		Pass values, not elements
+		Keep template statements simple
+		
+Lifecycle Hooks
+	Component lifecycle hooks overview (Directive and component instances have a lifecycle as Angular creates, updates, and destroys them)
+	Lifecycle sequence
+		ngOnChanges() - The method receives a SimpleChanges object of current and previous property values,Called before ngOnInit() and whenever one or more data-bound input properties change.
+		ngOnInit()
+		ngDoCheck() - Detect and act upon changes that Angular can't or won't detect on its own.Called during every change detection run
+		ngAfterContentInit() - Respond after Angular projects external content into the component's view
+		ngAfterContentChecked() - Respond after Angular checks the content projected into the directive/component.
+		ngAfterViewInit() - Respond after Angular initializes the component's views and child views / the view that a directive is in.
+		ngAfterViewChecked() - Respond after Angular checks the component's views and child views / the view that a directive is in
+		ngOnDestroy() - Cleanup just before Angular destroys the directive/component
