@@ -48,12 +48,12 @@ One-way (component's data property into a target element property)
 Two-way binding ( [(...)] ) BANANA IN A BOX
 
 Built-in attribute directives
-- [ngClass] - add and remove a set of CSS classes, Guard against null, <div [ngClass]="{'currentClasses':expression}"></div>
+- [ngClass] - add and remove a set of CSS classes, <div [ngClass]="{'currentClasses':expression}"></div>
 - [ngStyle] - add and remove a set of HTML styles
 - [(ngModel)] - two-way data binding to an HTML form element
 
 Built-in structural directives
-- *ngIf - conditionally add or remove an element from the DOM <app-hero-detail *ngIf="isActive"></app-hero-detail>
+- *ngIf - Guard against null, conditionally add or remove an element from the DOM <app-hero-detail *ngIf="isActive"></app-hero-detail>
 - *ngSwitch - a set of directives that switch among alternative views
 	<div [ngSwitch]="currentHero.emotion">
 	  <app-confused-hero *ngSwitchCase="'confused'" [hero]="currentHero"></app-confused-hero>
