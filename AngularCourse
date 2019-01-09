@@ -108,3 +108,31 @@ Lifecycle Hooks
 		ngAfterViewInit() - Respond after Angular initializes the component's views and child views / the view that a directive is in.
 		ngAfterViewChecked() - Respond after Angular checks the component's views and child views / the view that a directive is in
 		ngOnDestroy() - Cleanup just before Angular destroys the directive/component
+		
+Component Interaction
+	Pass data from parent to child with input binding
+	Intercept input property changes with a setter
+		@Input()
+		set name(name: string) {
+			this._name = (name && name.trim()) || '<no name set>';
+		}
+		 
+		get name(): string { return this._name; }
+	Intercept input property changes with ngOnChanges()
+	Parent listens for child event
+		The child component exposes an EventEmitter property with which it emits events when something happens. The parent binds to that event property and reacts to those events.
+	Parent interacts with child via local variable
+		<app-countdown-timer #timer></app-countdown-timer>
+	Parent calls an @ViewChild()
+		@ViewChild(CountdownTimerComponent)
+		private timerComponent: CountdownTimerComponent;
+	Parent and children communicate via a service
+		private missionAnnouncedSource = new Subject<string>();
+		 
+		// Observable string streams
+		missionAnnounced$ = this.missionAnnouncedSource.asObservable();
+		 
+		// Service message commands
+		announceMission(mission: string) {
+			this.missionAnnouncedSource.next(mission);
+		}
