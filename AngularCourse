@@ -136,3 +136,32 @@ Component Interaction
 		announceMission(mission: string) {
 			this.missionAnnouncedSource.next(mission);
 		}
+		
+Component Styles
+	Style scope
+	Special selectors
+		:host - Use the :host pseudo-class selector to target styles in the element that hosts the component
+		
+		:host(.active) {
+		  border-width: 3px;
+		}
+		:host-context() - The :host-context() selector looks for a CSS class in any ancestor of the component host element, up to the document root
+		
+		:host-context(.theme-light) h2 {
+		  background-color: #eef;
+		}
+		
+	Loading component styles
+		By setting styles or styleUrls metadata.
+		Inline in the template HTML.
+		With CSS imports
+	External and global style files - angular.json / style.css
+	Non-CSS style files - .scss, .less, .styl
+	View encapsulation - As discussed earlier, component CSS styles are encapsulated into the component's view and don't affect the rest of the application.
+		encapsulation: ViewEncapsulation.ShadowDom/Emulated(default)/Native/None
+	Inspecting generated CSS - add  _ngcontent with Emulated
+	
+Angular Elements Overview
+	Using custom elements - Custom elements bootstrap themselves - they start automatically when they are added to the DOM, and are automatically destroyed when removed from the DOM. Once a custom element is added to the DOM for any page, it looks and behaves like any other HTML element, and does not require any special knowledge of Angular terms or usage conventions
+	
+Dynamic Component Loader
