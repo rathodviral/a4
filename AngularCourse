@@ -165,3 +165,4 @@ Angular Elements Overview
 	Using custom elements - Custom elements bootstrap themselves - they start automatically when they are added to the DOM, and are automatically destroyed when removed from the DOM. Once a custom element is added to the DOM for any page, it looks and behaves like any other HTML element, and does not require any special knowledge of Angular terms or usage conventions
 	
 Dynamic Component Loader
+	https://stackblitz.com/edit/angular-zufgaw
