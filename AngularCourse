@@ -166,3 +166,8 @@ Angular Elements Overview
 	
 Dynamic Component Loader
 	https://stackblitz.com/edit/angular-zufgaw
+	Component templates are not always fixed. An application may need to load new components at runtime
+	
+Attribute Directives
+	An Attribute directive changes the appearance or behavior of a DOM element.
+	
