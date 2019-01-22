@@ -195,3 +195,5 @@ Attribute Directives
 	Bind to an @Input alias
 		@Input('appHighlight') highlightColor: string;
 		<p [appHighlight]="color">Highlight me!</p>
+Structural Directives
+	Structural directives are responsible for HTML layout. They shape or reshape the DOM's structure, typically by adding, removing, or manipulating elements.
