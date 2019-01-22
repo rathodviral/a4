@@ -165,9 +165,33 @@ Angular Elements Overview
 	Using custom elements - Custom elements bootstrap themselves - they start automatically when they are added to the DOM, and are automatically destroyed when removed from the DOM. Once a custom element is added to the DOM for any page, it looks and behaves like any other HTML element, and does not require any special knowledge of Angular terms or usage conventions
 	
 Dynamic Component Loader
-	https://stackblitz.com/edit/angular-zufgaw
+	Example of left-right component
 	Component templates are not always fixed. An application may need to load new components at runtime
 	
 Attribute Directives
 	An Attribute directive changes the appearance or behavior of a DOM element.
-	
+	Directives overview
+		Components—directives with a template.
+		Structural directives—change the DOM layout by adding and removing DOM elements.
+		Attribute directives—change the appearance or behavior of an element, component, or another directive.
+	Build a simple attribute directive
+		constructor(el: ElementRef) {
+		   el.nativeElement.style.backgroundColor = 'yellow';
+		}
+	Apply the attribute directive - <p appHighlight>Highlight me!</p>
+	Respond to user-initiated events
+		@HostListener('mouseenter') onMouseEnter() {
+		  this.highlight('yellow');
+		}
+		private highlight(color: string) {
+		  this.el.nativeElement.style.backgroundColor = color;
+		}
+	Pass values into the directive with an @Input data binding
+		@Input() highlightColor: string;
+		<p appHighlight [highlightColor]="'orange'">Highlighted in orange</p>
+		For same directive
+		<p [appHighlight]="color">Highlight me!</p>
+		@Input() appHighlight: string;
+	Bind to an @Input alias
+		@Input('appHighlight') highlightColor: string;
+		<p [appHighlight]="color">Highlight me!</p>
