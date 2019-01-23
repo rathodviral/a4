@@ -197,3 +197,9 @@ Attribute Directives
 		<p [appHighlight]="color">Highlight me!</p>
 Structural Directives
 	Structural directives are responsible for HTML layout. They shape or reshape the DOM's structure, typically by adding, removing, or manipulating elements.
+	The <ng-template> - The <ng-template> is an Angular element for rendering HTML. It is never displayed directly. In fact, before rendering the view, Angular replaces the <ng-template> and its contents with a comment.
+	<ng-container> - The Angular <ng-container> is a grouping element that doesn't interfere with styles or layout because Angular doesn't put it in the DOM.
+	Not possible to write 2 Structural directives on same element thats why use <ng-container>
+	Write a structural directive
+	
+	
