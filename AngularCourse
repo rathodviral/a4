@@ -201,5 +201,61 @@ Structural Directives
 	<ng-container> - The Angular <ng-container> is a grouping element that doesn't interfere with styles or layout because Angular doesn't put it in the DOM.
 	Not possible to write 2 Structural directives on same element thats why use <ng-container>
 	Write a structural directive
-	
+
+Pipes
+	- A pipe takes in data as input and transforms it to a desired output
+	- {{ birthday | date }} - birthday = new Date(1988, 3, 15);
+	Built-in pipes
+		DatePipe
+			{{ value_expression | date [ : format [ : timezone [ : locale ] ] ] }}
+			{{today | date}}
+			{{today | date:'fullDate'}}
+			{{today | date:'h:mm a z'}}
+		UpperCasePipe
+			{{ value_expression | uppercase }}
+		LowerCasePipe
+			{{ value_expression | lowercase }}
+		CurrencyPipe
+			{{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }}
+			{{a | currency}} - output '$0.26'
+			{{a | currency:'CAD'}} - output 'CA$0.26'
+			{{a | currency:'CAD':'code'}} - output 'CAD0.26'
+			{{b | currency:'CAD':'symbol':'4.2-2'}} - output 'CA$0,001.35'
+			{{b | currency:'CAD':'symbol-narrow':'4.2-2'}} - output '$0,001.35'
+			{{b | currency:'CAD':'symbol':'4.2-2':'fr'}} - output '0 001,35 CA$'
+			{{b | currency:'CLP'}} - output 'CLP1' because CLP has no cents
+		PercentPipe
+			{{ value_expression | percent [ : digitsInfo [ : locale ] ] }}
+			{{a | percent}} - output '26%'
+			{{b | percent:'4.3-5'}} - output '0,134.950%'
+			{{b | percent:'4.3-5':'fr'}} - output '0 134,950 %'
+		Parameterizing a pipe
+			- To add parameters to a pipe, follow the pipe name with a colon ( : ) and then the parameter value (such as currency:'EUR').
+			- {{ birthday | date:format }}
+			- get format()   { return this.toggle ? 'shortDate' : 'fullDate'; }
+			  toggleFormat() { this.toggle = !this.toggle; }
+		Chaining pipes
+			- {{ birthday | date | uppercase}}
+		Custom pipes
+		Pipes and change detection
+			- Angular looks for changes to data-bound values through a change detection process that runs after every DOM event: every keystroke, mouse move, timer tick, and server response. 
+		Pure and impure pipes
+			- There are two categories of pipes: pure and impure. Pipes are pure by default. Every pipe you've seen so far has been pure. You make a pipe impure by setting its pure flag to false.
+			Pure pipes
+				- Angular executes a pure pipe only when it detects a pure change to the input value. A pure change is either a change to a primitive input value (String, Number, Boolean, Symbol) or a changed object reference (Date, Array, Function, Object).
+			Impure pipes
+				- Angular executes an impure pipe during every component change detection cycle. An impure pipe is called often, as often as every keystroke or mouse-move.
+				-  pure: false
+			The impure AsyncPipe
+				- The Angular AsyncPipe is an interesting example of an impure pipe. The AsyncPipe accepts a Promise or Observable as input and subscribes to the input automatically, eventually returning the emitted values.
+				- The AsyncPipe is also stateful. The pipe maintains a subscription to the input Observable and keeps delivering values from that Observable as they arrive.
+			
+			
+			
+			
+			
+
+
+
+
 	
