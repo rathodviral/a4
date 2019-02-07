@@ -254,7 +254,26 @@ Pipes
 			
 			
 			
-
+Forms
+	Key differences - Reactive Forms and Template-driven Forms	
+		- Setup (form model)	More explicit, created in component class	Less explicit, created by directives
+		- Data model	Structured	Unstructured
+		- Predictability	Synchronous	Asynchronous
+		- Form validation	Functions	Directives
+		- Mutability	Immutable	Mutable
+		- Scalability	Low-level API access	Abstraction on top of APIs
+	Common foundation
+		FormControl tracks the value and validation status of an individual form control
+		FormGroup tracks the same values and status for a collection of form controls
+		FormArray tracks the same values and status for an array of form controls
+		ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
+	Form model setup
+		Setup in reactive forms
+			<input type="text" [formControl]="favoriteColorControl">
+			favoriteColorControl = new FormControl('');
+		Setup in template-driven forms
+			<input type="text" [(ngModel)]="favoriteColor">
+			favoriteColor = '';
 
 
 
