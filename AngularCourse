@@ -274,7 +274,24 @@ Forms
 		Setup in template-driven forms
 			<input type="text" [(ngModel)]="favoriteColor">
 			favoriteColor = '';
+	Data flow in forms
+		Data flow in reactive forms
+			The steps below outline the data flow from view to model.
+			
+			value in input element >> input element emits an "input" event >> control value accessor listening for events >> relays the new value to the FormControl instance >> instance emits the new value through the valueChanges observable >>  subscribers to the valueChanges observable receive the new value.
+			
+			The steps below outline the data flow from model to view.
+			
+			calls the favoriteColorControl.setValue() >> updates the FormControl value ?? FormControl instance emits the new value through the valueChanges observable >> subscribers to the valueChanges observable receive the new value >> control value accessor on the form input element updates the element with the new value.
+			
+		Data flow in template-driven forms
+			The steps below outline the data flow from view to model when the input value changes from Red to Blue.
 
+			value in input element >> input element emits an "input" event >> control value accessor attached to the input triggers the setValue() method on the FormControl instance >> instance emits the new value through the valueChanges observable >> subscribers to the valueChanges observable receive the new value >> control value accessor also calls the NgModel.viewToModelUpdate() method which emits an ngModelChange event
+			
+			The steps below outline the data flow from model to view when the favoriteColor changes from Blue to Red.
+
+			value is updated in the component >> Change detection begins >> ngOnChanges lifecycle hook is called on the NgModel directive instance because the value of one of its inputs has changed >> ngOnChanges() queues an async task to set the value for the internal FormControl instance >> Change detection completes >> FormControl instance value is executed >> instance emits the latest value through the valueChanges observable >> subscribers to the valueChanges observable receive the new value >> control value accessor updates the form input element
 
 
 	
